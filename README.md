@@ -1,174 +1,277 @@
-# HTML, CSS, JavaScript 기초 학습 프로젝트
+# 웹 기초 학습 프로젝트
 
-이 프로젝트는 웹 개발의 3가지 핵심 기술인 HTML, CSS, JavaScript의 기본 개념을 학습하기 위한 간단한 웹 애플리케이션입니다.
+이 프로젝트는 HTML, CSS, JavaScript를 사용한 기본적인 웹 애플리케이션으로, Node.js 서버와 통신하여 사용자 데이터를 저장하고 불러오는 기능을 제공합니다.
 
-## 프로젝트 구조
+## 데이터 처리 흐름
 
-```
-html_basic/
-├── index.html    # HTML 구조 정의
-├── styles.css    # CSS 스타일 정의
-├── script.js     # JavaScript 동작 정의
-└── README.md     # 프로젝트 설명
-```
+### 1. '제출' 버튼 클릭 시 데이터 처리 과정
 
-## 핵심 기술 설명
+사용자가 폼을 작성하고 '제출' 버튼을 클릭하면 다음과 같은 과정이 진행됩니다:
 
-### 1. HTML (HyperText Markup Language)
-- 웹 페이지의 구조와 콘텐츠를 정의하는 마크업 언어
-- 주요 요소:
-  - `<!DOCTYPE html>`: HTML5 문서 선언
-  - `<html>`: 전체 HTML 문서의 루트 요소
-  - `<head>`: 메타데이터, 스타일, 스크립트 참조 등을 포함
-  - `<body>`: 사용자에게 보이는 실제 콘텐츠
-  - `<header>`, `<main>`, `<footer>`: 시맨틱 구조 요소
-  - `<form>`, `<input>`, `<select>`: 사용자 입력 요소
+#### 클라이언트 측 처리 (script.js)
 
-### 2. CSS (Cascading Style Sheets)
-- 웹 페이지의 시각적 표현과 레이아웃을 정의하는 스타일 언어
-- 주요 개념:
-  - 선택자(Selector): 스타일을 적용할 HTML 요소 지정
-  - 속성(Property): 색상, 크기, 여백 등의 스타일 특성
-  - 값(Value): 속성에 할당되는 구체적인 설정
-  - 박스 모델: 콘텐츠, 패딩, 테두리, 마진으로 구성된 레이아웃 모델
-  - 반응형 디자인: 다양한 화면 크기에 맞게 조정되는 레이아웃
-
-### 3. JavaScript
-- 웹 페이지에 동적 기능을 추가하는 프로그래밍 언어
-- 주요 기능:
-  - DOM 조작: HTML 요소 선택, 수정, 추가, 삭제
-  - 이벤트 처리: 사용자 상호작용(클릭, 입력 등)에 반응
-  - 폼 유효성 검사: 사용자 입력 데이터 검증
-  - 동적 콘텐츠 생성: 데이터에 기반한 HTML 콘텐츠 생성
-  - 애니메이션: 시각적 효과 구현
-
-### 4. DOM 객체 활용
-- DOM(Document Object Model)은 HTML 문서를 프로그래밍적으로 조작할 수 있는 인터페이스
-- 주요 활용 방법:
-  - **DOM 객체 참조 획득**: `document.getElementById()`, `querySelector()` 등을 사용하여 HTML 요소 참조
-  - **이벤트 리스너 등록**: `addEventListener()`를 사용하여 사용자 상호작용에 반응하는 함수 등록
-  - **이벤트 처리 및 DOM 조작**: 이벤트 발생 시 `innerHTML`, `textContent` 등을 사용하여 HTML 콘텐츠 변경
-  - **이벤트 기본 동작 방지**: `event.preventDefault()`를 사용하여 폼 제출 시 페이지 새로고침 방지
-
-예를 들어, 이 프로젝트에서 제출 버튼을 누르면 우측에 결과가 나타나는 것은 JavaScript에서 DOM 객체를 이용하기 때문입니다:
-
-```javascript
-// DOM 객체 참조 획득
-const userForm = document.getElementById('user-form');
-const resultDisplay = document.getElementById('result-display');
-
-// 이벤트 리스너 등록
-userForm.addEventListener('submit', function(event) {
-    // 기본 동작 방지
-    event.preventDefault();
-    
-    // 입력값 처리 및 결과 표시
-    displayResult(name, age, color);
-});
-
-// DOM 조작으로 결과 표시
-function displayResult(name, age, color) {
-    resultDisplay.innerHTML = `결과 HTML 내용`;
-}
-```
-
-이러한 DOM 조작 기능은 JavaScript의 핵심 기능 중 하나로, 정적인 HTML 페이지를 동적으로 변경할 수 있게 해줍니다. 이를 통해 페이지를 새로고침하지 않고도 사용자와 상호작용하는 웹 애플리케이션을 만들 수 있습니다.
-
-## 핵심 코드 설명
-
-### HTML 핵심 코드
-```html
-<!-- 기본 HTML 구조 -->
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>웹 기초 학습</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- 콘텐츠 구조 -->
-    <header>...</header>
-    <main>
-        <section id="user-input-section">...</section>
-        <section id="result-section">...</section>
-    </main>
-    <footer>...</footer>
-    <script src="script.js"></script>
-</body>
-</html>
-```
-
-### CSS 핵심 코드
-```css
-/* 기본 스타일 설정 */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-}
-
-/* 레이아웃 구성 */
-main {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    main {
-        flex-direction: column;
-    }
-    
-    section {
-        min-width: 100%;
-    }
-}
-```
-
-### JavaScript 핵심 코드
-```javascript
-// DOM 로드 후 실행
-document.addEventListener('DOMContentLoaded', function() {
-    // 요소 참조 가져오기
-    const userForm = document.getElementById('user-form');
-    
-    // 이벤트 리스너 등록
-    userForm.addEventListener('submit', function(event) {
-        // 기본 동작 방지
-        event.preventDefault();
-        
-        // 입력값 가져오기 및 처리
-        const username = usernameInput.value.trim();
-        
-        // 유효성 검사 및 결과 표시
-        if (조건) {
-            showError('메시지');
-        } else {
-            displayResult(데이터);
-        }
-    });
-});
-```
-
-## 실행 방법
-
-1. 프로젝트 폴더의 `index.html` 파일을 웹 브라우저에서 열기
-2. 또는 로컬 웹 서버를 사용하여 실행:
+1. **이벤트 리스너 등록**
+   ```javascript
+   userForm.addEventListener('submit', function(event) {
+       // 기본 제출 동작 방지 (페이지 새로고침 방지)
+       event.preventDefault();
+       
+       // 입력값 가져오기
+       const username = usernameInput.value.trim();
+       const age = ageInput.value;
+       const favoriteColor = colorSelect.value;
+       
+       // 입력 유효성 검사
+       // ...
+       
+       // 유효한 입력이면 결과 표시
+       displayResult(username, age, favoriteColor);
+       
+       // 폼 초기화
+       userForm.reset();
+   });
    ```
-   # Python을 사용한 간단한 웹 서버 실행 예시
-   python -m http.server
+
+2. **결과 표시 함수 (displayResult)**
+   ```javascript
+   function displayResult(name, age, color) {
+       // 결과 HTML 생성
+       const resultHTML = `
+           <h3>사용자 정보</h3>
+           <p><strong>이름:</strong> ${name}</p>
+           <p><strong>나이:</strong> ${age}세</p>
+           <p><strong>좋아하는 색상:</strong> <span class="color-box" style="background-color: ${color}"></span> ${getColorName(color)}</p>
+       `;
+       
+       // 결과 영역에 HTML 삽입
+       resultDisplay.innerHTML = resultHTML;
+       
+       // 사용자 데이터 객체 생성
+       const userData = {
+           username: name,
+           age: parseInt(age),
+           favoriteColor: color
+       };
+       
+       // 사용자 데이터 표시 이벤트 발생 (다른 스크립트에서 사용하기 위해)
+       const userDataEvent = new CustomEvent('userDataDisplayed', {
+           detail: userData
+       });
+       document.dispatchEvent(userDataEvent);
+   }
    ```
-   그리고 브라우저에서 `http://localhost:8000` 접속
 
-## 학습 포인트
+3. **API.js에서 이벤트 수신**
+   ```javascript
+   document.addEventListener('userDataDisplayed', function(event) {
+       // 이벤트에서 사용자 데이터 가져오기
+       currentUserData = event.detail;
+   });
+   ```
 
-1. **HTML**: 시맨틱 태그 사용, 폼 구조, 문서 구조화
-2. **CSS**: 선택자, 박스 모델, Flexbox 레이아웃, 반응형 디자인
-3. **JavaScript**: DOM 조작, 이벤트 처리, 폼 유효성 검사, 동적 콘텐츠 생성
-4. **DOM 활용**: DOM 객체 참조, 이벤트 리스너, 동적 콘텐츠 업데이트, 사용자 상호작용 처리
+### 2. '서버에 저장' 버튼 클릭 시 데이터 처리 과정
 
-이 프로젝트를 통해 웹 개발의 기초를 이해하고, 세 가지 핵심 기술이 어떻게 상호작용하는지 배울 수 있습니다.
+사용자가 '서버에 저장' 버튼을 클릭하면 다음과 같은 과정이 진행됩니다:
+
+#### 클라이언트 측 처리 (api.js)
+
+1. **저장 버튼 클릭 이벤트 리스너**
+   ```javascript
+   saveBtn.addEventListener('click', function() {
+       // 현재 표시된 사용자 데이터가 있는지 확인
+       if (!currentUserData) {
+           alert('저장할 사용자 데이터가 없습니다. 먼저 사용자 정보를 입력하고 제출해주세요.');
+           return;
+       }
+       
+       // 서버에 사용자 데이터 저장 요청
+       saveUserData(currentUserData)
+           .then(response => {
+               alert('사용자 데이터가 성공적으로 저장되었습니다.');
+               // 저장된 데이터 목록 새로고침
+               loadUserData();
+           })
+           .catch(error => {
+               alert('데이터 저장 중 오류가 발생했습니다: ' + error.message);
+           });
+   });
+   ```
+
+2. **서버에 데이터 저장 함수 (saveUserData)**
+   ```javascript
+   async function saveUserData(userData) {
+       try {
+           const response = await fetch(`${API_BASE_URL}/users`, {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(userData)
+           });
+           
+           if (!response.ok) {
+               const errorData = await response.json();
+               throw new Error(errorData.error || '서버 오류');
+           }
+           
+           return await response.json();
+       } catch (error) {
+           console.error('사용자 데이터 저장 오류:', error);
+           throw error;
+       }
+   }
+   ```
+
+#### 서버 측 처리 (server.js)
+
+1. **사용자 데이터 저장 API 엔드포인트**
+   ```javascript
+   app.post('/api/users', (req, res) => {
+       try {
+           // 요청 본문에서 사용자 데이터 가져오기
+           const newUser = req.body;
+           
+           // 필수 필드 검증
+           if (!newUser.username || !newUser.age || !newUser.favoriteColor) {
+               return res.status(400).json({ error: '모든 필드를 입력해주세요.' });
+           }
+           
+           // 파일에서 기존 데이터 읽기
+           const data = fs.readFileSync(DATA_FILE, 'utf8');
+           const users = JSON.parse(data);
+           
+           // 새 사용자에게 고유 ID 부여
+           newUser.id = Date.now().toString();
+           newUser.createdAt = new Date().toISOString();
+           
+           // 새 사용자 추가
+           users.push(newUser);
+           
+           // 파일에 업데이트된 데이터 저장
+           fs.writeFileSync(DATA_FILE, JSON.stringify(users, null, 2), 'utf8');
+           
+           res.status(201).json(newUser);
+       } catch (error) {
+           console.error('사용자 데이터 저장 오류:', error);
+           res.status(500).json({ error: '데이터를 저장하는 중 오류가 발생했습니다.' });
+       }
+   });
+   ```
+
+### 3. '저장된 데이터 불러오기' 버튼 클릭 시 데이터 처리 과정
+
+사용자가 '저장된 데이터 불러오기' 버튼을 클릭하면 다음과 같은 과정이 진행됩니다:
+
+#### 클라이언트 측 처리 (api.js)
+
+1. **불러오기 버튼 클릭 이벤트 리스너**
+   ```javascript
+   loadBtn.addEventListener('click', function() {
+       // 저장된 데이터 섹션 표시 전환
+       if (savedDataSection.style.display === 'none') {
+           savedDataSection.style.display = 'block';
+           loadUserData(); // 사용자 데이터 불러오기
+       } else {
+           savedDataSection.style.display = 'none';
+       }
+   });
+   ```
+
+2. **서버에서 데이터 불러오기 함수 (loadUserData)**
+   ```javascript
+   async function loadUserData() {
+       try {
+           const response = await fetch(`${API_BASE_URL}/users`);
+           
+           if (!response.ok) {
+               const errorData = await response.json();
+               throw new Error(errorData.error || '서버 오류');
+           }
+           
+           const users = await response.json();
+           displaySavedUsers(users);
+       } catch (error) {
+           console.error('사용자 데이터 불러오기 오류:', error);
+           alert('데이터를 불러오는 중 오류가 발생했습니다: ' + error.message);
+       }
+   }
+   ```
+
+3. **불러온 데이터 표시 함수 (displaySavedUsers)**
+   ```javascript
+   function displaySavedUsers(users) {
+       // 목록 초기화
+       savedUsersList.innerHTML = '';
+       
+       if (users.length === 0) {
+           savedUsersList.innerHTML = '<li>저장된 사용자가 없습니다.</li>';
+           return;
+       }
+       
+       // 각 사용자 데이터에 대한 목록 항목 생성
+       users.forEach(user => {
+           const li = document.createElement('li');
+           
+           // 사용자 정보 표시
+           const userInfo = document.createElement('div');
+           userInfo.innerHTML = `
+               <strong>${user.username}</strong> (${user.age}세) - 
+               <span class="color-box" style="background-color: ${user.favoriteColor}"></span>
+               ${getColorName(user.favoriteColor)}
+           `;
+           
+           // 삭제 버튼 생성
+           const deleteBtn = document.createElement('button');
+           deleteBtn.textContent = '삭제';
+           deleteBtn.className = 'delete-btn';
+           deleteBtn.addEventListener('click', function() {
+               deleteUser(user.id);
+           });
+           
+           // 항목에 사용자 정보와 삭제 버튼 추가
+           li.appendChild(userInfo);
+           li.appendChild(deleteBtn);
+           
+           // 목록에 항목 추가
+           savedUsersList.appendChild(li);
+       });
+   }
+   ```
+
+#### 서버 측 처리 (server.js)
+
+1. **사용자 데이터 가져오기 API 엔드포인트**
+   ```javascript
+   app.get('/api/users', (req, res) => {
+       try {
+           // 파일에서 사용자 데이터 읽기
+           const data = fs.readFileSync(DATA_FILE, 'utf8');
+           const users = JSON.parse(data);
+           res.json(users);
+       } catch (error) {
+           console.error('사용자 데이터 읽기 오류:', error);
+           res.status(500).json({ error: '데이터를 불러오는 중 오류가 발생했습니다.' });
+       }
+   });
+   ```
+
+## 데이터 흐름 요약
+
+1. **제출 버튼 클릭 시**:
+   - 사용자 입력 데이터 수집 및 유효성 검사
+   - 화면에 결과 표시
+   - 사용자 데이터 객체 생성 및 이벤트 발생
+
+2. **서버에 저장 버튼 클릭 시**:
+   - 현재 사용자 데이터 확인
+   - 서버에 POST 요청 전송
+   - 서버에서 데이터 검증 및 파일에 저장
+   - 저장 성공/실패 알림 표시
+
+3. **저장된 데이터 불러오기 버튼 클릭 시**:
+   - 저장된 데이터 섹션 표시/숨김 전환
+   - 서버에 GET 요청 전송
+   - 서버에서 파일 데이터 읽기
+   - 불러온 데이터를 화면에 목록으로 표시
+
+이 프로젝트는 클라이언트-서버 통신의 기본 원리를 보여주며, 사용자 데이터의 입력, 저장, 불러오기, 삭제 등의 CRUD(Create, Read, Update, Delete) 작업을 구현하고 있습니다.
