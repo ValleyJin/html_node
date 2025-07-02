@@ -42,6 +42,38 @@ html_basic/
   - 동적 콘텐츠 생성: 데이터에 기반한 HTML 콘텐츠 생성
   - 애니메이션: 시각적 효과 구현
 
+### 4. DOM 객체 활용
+- DOM(Document Object Model)은 HTML 문서를 프로그래밍적으로 조작할 수 있는 인터페이스
+- 주요 활용 방법:
+  - **DOM 객체 참조 획득**: `document.getElementById()`, `querySelector()` 등을 사용하여 HTML 요소 참조
+  - **이벤트 리스너 등록**: `addEventListener()`를 사용하여 사용자 상호작용에 반응하는 함수 등록
+  - **이벤트 처리 및 DOM 조작**: 이벤트 발생 시 `innerHTML`, `textContent` 등을 사용하여 HTML 콘텐츠 변경
+  - **이벤트 기본 동작 방지**: `event.preventDefault()`를 사용하여 폼 제출 시 페이지 새로고침 방지
+
+예를 들어, 이 프로젝트에서 제출 버튼을 누르면 우측에 결과가 나타나는 것은 JavaScript에서 DOM 객체를 이용하기 때문입니다:
+
+```javascript
+// DOM 객체 참조 획득
+const userForm = document.getElementById('user-form');
+const resultDisplay = document.getElementById('result-display');
+
+// 이벤트 리스너 등록
+userForm.addEventListener('submit', function(event) {
+    // 기본 동작 방지
+    event.preventDefault();
+    
+    // 입력값 처리 및 결과 표시
+    displayResult(name, age, color);
+});
+
+// DOM 조작으로 결과 표시
+function displayResult(name, age, color) {
+    resultDisplay.innerHTML = `결과 HTML 내용`;
+}
+```
+
+이러한 DOM 조작 기능은 JavaScript의 핵심 기능 중 하나로, 정적인 HTML 페이지를 동적으로 변경할 수 있게 해줍니다. 이를 통해 페이지를 새로고침하지 않고도 사용자와 상호작용하는 웹 애플리케이션을 만들 수 있습니다.
+
 ## 핵심 코드 설명
 
 ### HTML 핵심 코드
@@ -137,5 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
 1. **HTML**: 시맨틱 태그 사용, 폼 구조, 문서 구조화
 2. **CSS**: 선택자, 박스 모델, Flexbox 레이아웃, 반응형 디자인
 3. **JavaScript**: DOM 조작, 이벤트 처리, 폼 유효성 검사, 동적 콘텐츠 생성
+4. **DOM 활용**: DOM 객체 참조, 이벤트 리스너, 동적 콘텐츠 업데이트, 사용자 상호작용 처리
 
 이 프로젝트를 통해 웹 개발의 기초를 이해하고, 세 가지 핵심 기술이 어떻게 상호작용하는지 배울 수 있습니다.
