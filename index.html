@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 문서의 메타데이터 정의 영역 -->
+    <meta charset="UTF-8"> <!-- 문자 인코딩 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 반응형 웹 설정 -->
+    <title>웹 기초 학습</title> <!-- 브라우저 탭에 표시되는 제목 -->
+    
+    <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 섹션 - 페이지 상단 영역 -->
+    <header>
+        <h1>HTML, CSS, JavaScript 기초</h1> <!-- 주제목 -->
+        <p>웹 개발의 3가지 핵심 기술 학습</p> <!-- 부제목 -->
+    </header>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main>
+        <!-- 사용자 정보 입력 섹션 -->
+        <section id="user-input-section">
+            <h2>사용자 정보 입력</h2>
+            
+            <!-- 폼 요소: 사용자 입력을 수집 -->
+            <form id="user-form">
+                <div class="form-group">
+                    <label for="username">이름:</label> <!-- 입력 필드 레이블 -->
+                    <input type="text" id="username" placeholder="이름을 입력하세요"> <!-- 텍스트 입력 필드 -->
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">나이:</label>
+                    <input type="number" id="age" placeholder="나이를 입력하세요"> <!-- 숫자 입력 필드 -->
+                </div>
+                
+                <div class="form-group">
+                    <label for="favorite-color">좋아하는 색상:</label>
+                    <select id="favorite-color"> <!-- 드롭다운 선택 메뉴 -->
+                        <option value="">선택하세요</option>
+                        <option value="red">빨강</option>
+                        <option value="blue">파랑</option>
+                        <option value="green">초록</option>
+                        <option value="yellow">노랑</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="submit-btn">제출</button> <!-- 제출 버튼 -->
+            </form>
+        </section>
+
+        <!-- 결과 표시 섹션 -->
+        <section id="result-section">
+            <h2>입력 결과</h2>
+            <div id="result-display">
+                <!-- JavaScript로 동적으로 내용이 채워질 영역 -->
+                <p>아직 제출된 정보가 없습니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 섹션 - 페이지 하단 영역 -->
+    <footer>
+        <p>&copy; 2025 웹 기초 학습 프로젝트</p>
+    </footer>
+
+    <!-- 외부 JavaScript 파일 연결 (body 끝에 위치하여 페이지 로딩 후 실행) -->
+    <script src="script.js"></script>
+</body>
+</html>
