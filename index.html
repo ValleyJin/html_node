@@ -56,6 +56,20 @@
                 <!-- JavaScript로 동적으로 내용이 채워질 영역 -->
                 <p>아직 제출된 정보가 없습니다.</p>
             </div>
+            
+            <!-- 데이터 저장 및 불러오기 버튼 -->
+            <div class="action-buttons">
+                <button type="button" id="save-btn">서버에 저장</button>
+                <button type="button" id="load-btn">저장된 데이터 불러오기</button>
+            </div>
+            
+            <!-- 저장된 데이터 목록 -->
+            <div id="saved-data-section" style="display: none;">
+                <h3>저장된 사용자 목록</h3>
+                <ul id="saved-users-list">
+                    <!-- 저장된 사용자 목록이 여기에 표시됩니다 -->
+                </ul>
+            </div>
         </section>
     </main>
 
@@ -66,5 +80,7 @@
 
     <!-- 외부 JavaScript 파일 연결 (body 끝에 위치하여 페이지 로딩 후 실행) -->
     <script src="script.js"></script>
+    <!-- API 통신을 위한 JavaScript 파일 -->
+    <script src="api.js"></script>
 </body>
 </html>

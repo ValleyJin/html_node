@@ -69,6 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 색상에 따라 결과 영역 테두리 색상 변경
         resultDisplay.style.borderColor = color;
+        
+        // 사용자 데이터 객체 생성
+        const userData = {
+            username: name,
+            age: parseInt(age),
+            favoriteColor: color
+        };
+        
+        // 사용자 데이터 표시 이벤트 발생 (다른 스크립트에서 사용하기 위해)
+        const userDataEvent = new CustomEvent('userDataDisplayed', {
+            detail: userData
+        });
+        document.dispatchEvent(userDataEvent);
     }
     
     // 색상 코드에 따른 색상 이름 반환 함수
