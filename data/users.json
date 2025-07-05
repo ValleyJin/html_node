@@ -1,0 +1,16 @@
+[
+  {
+    "username": "홍길동",
+    "age": 21,
+    "favoriteColor": "red",
+    "id": "1751688600137",
+    "createdAt": "2025-07-05T04:10:00.137Z"
+  },
+  {
+    "username": "성춘향",
+    "age": 18,
+    "favoriteColor": "blue",
+    "id": "1751688615636",
+    "createdAt": "2025-07-05T04:10:15.636Z"
+  }
+]
